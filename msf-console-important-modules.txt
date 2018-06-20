@@ -1,0 +1,1 @@
+auxiliary/scanner/smb/smb_login => for brute forcing password list on windows

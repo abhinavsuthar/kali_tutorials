@@ -1,0 +1,10 @@
+1. apt-get install squid3
+2. apt-get install imagemagick ghostscript jp2a
+3. download squid script whichever you want from the internet
+4. nano /etc/squid/squid.conf
+5. some changes are required
+   i didn't write because it seems unusefull to me
+
+this is next part of "SSL Stripping and ARP Spoofing". we learned
+that we can redirects victim's traffic through our machine,
+by this we can add some data to victim's network-request-result

